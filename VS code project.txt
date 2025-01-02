@@ -1,0 +1,10 @@
+Module 3: DevOps Overview
+
+	1. Evolution of Waterfall, Agile, and DevOps
+	2. What is DevOps
+	3. Why DevOps
+	4. Benefits of DevOps
+	5. DevOps Stages
+	6. DevOps Lifecycle
+	7. Various Automation in DevOps
+	8. Overview of CICD
