@@ -266,3 +266,187 @@ Day 17 : 2nd Jan. 2025
 		-p <host_port>:<container_port>
 
 
+
+########################
+Day 18 : 3rd Jan. 2025
+########################
+
+
+	Docker Images :
+	
+	Create Container Images :
+	
+		- Docker Commit :::
+		
+			- Create a Container Image based on the existing Container Reference
+				
+				Eg.: 
+				
+					docker commit <existing container_id> <Container_Repository_Name>/<New_Container_Image_Name>:<Tag>
+					
+					docker commit 59621ac38cbb loksaieta/sa-javabuildenv-Img:v1.0					
+	
+		
+		- Docker Build :::
+		
+			- To create a new Container Image based on the Dockerfile reference.
+			- Dockerfile composed of Instructions to Create Docker Container Images
+			- Application Developers create the Dockerfile and update in the Source Code Repository. 
+				
+				Eg.: 
+				
+					docker build <Container_Repository_Name>/<New_Container_Image_Name>:<Tag> .		"." Denotes the Dockerfile Reference.
+					
+					Create Dockerfile ::
+
+					vi Dockerfile
+					
+					FROM ubuntu
+					RUN apt update -y 
+					RUN apt install git -y 
+					RUN apt install maven -y 
+					
+			
+					docker build -t loksaieta/sa-javabuildenv-img:v1.2 .			"." Denotes the Dockerfile Reference.	
+
+
+		Write Dockerfile :::
+		
+			Docker File Instructions :::
+			
+			FROM 									# To Identify the Base Image
+			RUN 									# To run the package manager
+			COPY 									# To Copy the file from host volume to container volume
+			CP 										# To Copy the file within the container volumes 
+			ADD 									# To Copy the file from Host Volume as well as from URL
+			ENV 									# To define the Environment Variable 
+			ARG 									# To pass Arguements to the Steps in Dockerfile 
+			EXPOSE									# To Define the Container Port 
+			WORKDIR									# To set the current working directory within the Container 
+			CMD										# To set the default start-up command to the container 
+													  This Command can be changed at run-time.
+			ENTRYPOINT								# To set the default start-up command to the container 
+													  This Command cannot be changed at run-time.	
+			
+			
+		
+		
+		docker history <Image_Name>			# Used to find the Image Layers from Local Machine 
+
+		docker run -it loksaieta/sa-javabuildenv-img:v1.2 bash 	# Create and run a Container based on the new image.
+		
+	
+	Push the Images to Container Registry :::
+	
+		- Login to Container Registry using Docker Cli
+		
+			- Create Access Token in DockerHub 
+			
+			- DockerHub UserName 				docker login -u lkjkhkj
+			- DockerHub Access Token 			jhjvjkjbknknb
+		
+		- Docker Push Command to Push the Image to Container Registry
+		
+			docker push loksaieta/sa-javabuildenv-img:v1.1
+			
+
+
+Assignment :
+
+
+			Use the exiting *.war
+			Eg.: 
+			
+			Dockerfile :::
+			
+			FROM tomcat:8.0
+			COPY ./target/*.war /usr/local/tomcat/webapps
+			EXPOSE 8080			
+
+			docker build -t loksaieta/sa-mywabappsvc-img:v1.0 .
+			
+			docker run -it loksaieta/sa-mywabappsvc-img:v1.0 bash
+			
+			$ ls 
+			$ cd webapps 
+			$ ls 
+			$ exit 
+			
+
+			docker run -it -p 8089:8080 loksaieta/sa-mywabappsvc-img:v1.0
+
+
+
+	3 - Tier Application: 
+	
+	Sign_In Page :
+	
+	
+		- Front-End Layer 	# User-Interface
+		- Application Layer # Business Logics 
+		- Back-End Layer  	# DataBase
+
+		
+		
+ 12  docker images
+   13  docker ps -a
+   14  clear
+   15  docker ps -a
+   16  docker ps
+   17  docker rm 2aa7a0ddda62 fb3b454ad1de ca68336ffe61 d7c145d62322 f0e7c937424c 1447823d6a39 b3eab185c288 1a055990cd3f
+   18  docker ps
+   19  docker ps -a
+   20  docker rm cc17e999e5fd 4dba471ced1b
+   21  clear
+   22  docker ps -a
+   23  docker start 59621ac38cbb
+   24  docker ps
+   25  docker exec -it 59621ac38cbb bash
+   26  docker ps
+   27  docker exec -it 59621ac38cbb bash
+   28  docker stop 59621ac38cbb
+   29  docker ps -a
+   30  docker images
+   31  clear
+   32  docker images
+   33  docker commit 59621ac38cbb loksaieta/sa-javabuildenv-Img:v1.0
+   34  docker commit 59621ac38cbb loksaieta/sa-javabuildenv-img:v1.0
+   35  docker images
+   36  docker run -it loksaieta/sa-javabuildenv-img:v1.0 bash
+   37  docker ps -a
+   38  docker images
+   39  docker run -it loksaieta/sa-javabuildenv-img:v1.0 bash
+   40  docker ps -a
+   41  docker commit ccb6df63d6fc loksaieta/sa-javabuildenv-img:v1.1
+   42  docker images
+   43  docker run -it loksaieta/sa-javabuildenv-img:v1.1 bash
+   44  docker ps -a
+   45  clear
+   46  docker ps -a
+   47  docker login -u loksaieta
+   48*
+   49  docker images
+   50  docker ps -a
+   51  clear
+   52  mkdir docker-contents
+   53  cd docker-contents/
+   54  vi Dockerfile
+   55  cat Dockerfile
+   56  pwd
+   57  ls
+   58  docker build -t loksaieta/sa-javabuildenv-img:v1.2 .
+   59  celar
+   60  clear
+   61  docker images
+   62  docker history ubuntu
+   63  docker history loksaieta/sa-javabuildenv-img:v1.2
+   64  docker images
+   65  docker ps -a
+   66  cat Dockerfile
+   67  docker images
+   68  docker ps -a
+   69  cd ..
+   70  history
+	
+Next ::	
+	Docker Volume :::
