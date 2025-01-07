@@ -450,3 +450,162 @@ Assignment :
 	
 Next ::	
 	Docker Volume :::
+
+########################
+Day 19 : 7th Jan. 2025
+########################	
+		
+	Docker Volume :::
+		
+	Container Orchestration :
+
+		- Overview of Docker Compose 
+		
+		- Overview of Docker Swarm 
+		
+		- Kubernetes
+	
+		
+	Docker Volume :::
+	
+		--> Used to maintain the persistant data.
+		
+		Types of Applications on Container Perspective :
+		
+			- Stateless Applications
+			
+			- Stateful Applications 
+		
+		3-Tier Application Architecture :::
+		
+		Micro-Service1 - User_Sign_in Service
+		
+			- Front-End	 			C1 
+			
+			- Application Layer 	C2 
+			
+			- DataBase Layer 		C3 
+			
+			
+		
+		docker volume list 
+		
+		docker volume create sa-vol1 				# Create a Docker Volume in Host Machine 
+		
+		docker volume inspect sa-vol1
+
+		docker run -it --mount source=sa-vol1,destination=/sa-vol1 ubuntu bash 
+		
+	
+	Container Orchestration :
+
+		- Overview of Docker Compose 
+		
+		- Overview of Docker Swarm 
+		
+		- Kubernetes	
+		
+	Overview of Docker Compose :::
+
+		3-Tier Application Architecture :::
+		
+		Micro-Service1 - User_Sign_in Service
+			- Front-End	 			C1 
+			
+			- Application Layer 	C2 
+			
+			- DataBase Layer 		C3 
+			
+			
+		Docker Compose :
+			- Is used to run Multiple Containers as a Service!
+			- Docker Compose is the default package of Container-Engine
+			- Docker Compose is an extension/plugins to Docker
+			- Create a manifest file *.yaml
+			
+			
+			
+//https://docs.docker.com/compose/install/linux/
+
+
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+	
+
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+
+docker compose version
+// Docker Compose version v2.18.
+
+	-> Create a manifest/config file ==> Is written using yaml script.
+		vi docker-compose.yaml
+
+[root@ip-172-31-47-216 service1]# cat docker-compose.yaml
+
+version: '3'
+services:
+  webserv:
+    image: "tomcat:8.0"
+    ports:
+      - 8098:8080
+  dbserv:
+    image: "redis:alpine"
+
+docker compose version
+
+docker compose up			Start all the container as defined in docker-compose file
+
+docker compose down 		Stop all the container as defined in docker-compose file
+	
+	Container Orchestration Tool :
+	
+	Docker Swarm 
+	
+		Micro-Service1 - User_Sign_in Service  -  prod
+		
+			- Front-End	 			C1 
+			
+			- Application Layer 	C2 
+			
+			- DataBase Layer 		C3 	
+			
+			
+		Environments :::
+		
+			Non-Prod 				Prod Environment 
+			
+			Dev/QA/UAT 					Prod_Server1,2,3,4,5
+			
+
+			Micro-Service1 - User_Sign_in Service  -  prod
+			
+				- Front-End	 			C1.1,C1.2,C1.3 
+				
+				- Application Layer 	C2.1,C2.2,C2.3 
+				
+				- DataBase Layer 		C3.1,C3.2,C3.3  	
+				
+				
+			
+			Application Service :
+				
+				1000 Users   -- 30 Replicas of Container 
+				
+				10000 Users  -- 300 Replicas of Container 
+
+	
+		- Docker Swarm is one the Container Orchestration Tools.
+		- It is meant only for Docker Containers.
+		- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+		- We cannot Do Auto-Scaling or Load Balancing!
+		
+		
+			Service :::
+			
+				Front_End			C1 / Replicas of C1 - 3 Replicas 
+				
+				Application_Layer	C2 
+				
+				Back_End (DataBase) C3 
+				
