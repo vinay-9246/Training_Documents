@@ -1,0 +1,41 @@
+
+########################
+Day 19 : 7th Jan. 2025
+########################					
+
+	Kubernetes ::::
+	
+		- It is a Open-Source Container Orchestration Tool 
+		- Kubernetes is used to Deploy any type of Containers.
+		- It is used to ensure high availability of the Applications/services running thru Containers.
+		- Used to Ensure High Availability of Containers by creating Replicas of Containers.
+		- It supports Auto-Scaling & Load Balancing.
+		
+	
+	AWS 	- EKS/ECR/ECS
+	
+	Azure 	- AKS/ACR/ACS
+	
+	GCP 	- GKE/GCR/GCE
+	
+	
+	Kubernetes :::
+	
+		- Open-Source Kubernetes
+		
+		- Kubernetes Architecture
+		
+		- Components/Terminologies of Kubernetes
+		
+		- Kubernetes Concepts 
+		
+			- Pods
+			- Volumes 
+			- Services 
+			
+Related to the Project :::
+			
+	Integrate Kubernetes, Docker with Jenkins
+	Create CICD Pipeline using Jenkins, Docker & Kubernetes
+		
+		
