@@ -207,4 +207,51 @@ Next ::::
 		https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 		
 		https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+
+
+########################
+Day 21 : 9th Jan. 2025
+########################		
+
+
+	Install and Configure Kubernetes Master Node and Worker Nodes using Kubeadm
 	
+		https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
+		
+		https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/		
+		
+		
+	
+		Kubernetes Master 				1 Master Node.
+		
+			Kubernetes_WorkNode1
+			Kubernetes_WorkNode2	
+		
+		
+	Following Commands to be executed in all the Nodes(Master&Worker)
+	
+		1. Launch 3 EC2 Instances - Ubuntu v22.04
+		2. Update Inbound Rule - Security Group
+		3. Set the Host Name 
+		3.1. Disable Swap
+		4. Install Docker 
+		5. Install Container-D (CRI)
+			- Configure Net-Filter Module 
+			- Configure IP6 Table Ref.
+			- Download Container-Package using curl command 
+			- Install Container-D 
+			- Configure Container-D Config.toml file 
+			- Restart Container-D
+		6. Install Kubeadm,Kubectl,Kubelet 
+			- Download using curl command 
+			- Install 
+			- Enable kubelet 
+		
+	Following Commands to be executed only in Master Node		
+		
+		7. kubeadm init 									# To initialize Master Node 
+					
+	Following Commands to be executed in all Worker Nodes
+
+		8. kubeadm join 									# To Attach Worker Nodes to Master Node.
