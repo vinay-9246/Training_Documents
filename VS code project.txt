@@ -7,4 +7,4 @@ Module 3: DevOps Overview
 	5. DevOps Stages
 	6. DevOps Lifecycle
 	7. Various Automation in DevOps
-	8. Overview of CICD git and git hub
+	8. Overview of CICD git and git hub repo 1 project1
