@@ -122,7 +122,8 @@ Implementation Procedures/Steps :::
 Checklist :::
 
 		Firstly, fork the repository and use your own repository in the pipeline	
-		
+		https://github.com/SA-Team-DevOps-03-Dec-24/BankingApp
+
 		1. Launch all the Required VMs 					==> AWS AMI - Ubuntu v22.04 - (Create using Terraform/AWS Console)
 		2. Ensure all the Required Ports are enabled using Security Group(Inbound Rules)
 		3. Install all the Required Tools in each VM 	==> Manual / Ansible Playbooks 
